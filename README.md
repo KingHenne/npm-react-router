@@ -7,9 +7,9 @@ Use the command `typings install react-router --save`.
 
 You're code should look pretty much the same the javascript with one exception.
 When a component is used with a `Route` component it injects several property values.
-To type this the `IInjectableProps` interface has all the properties defined that injecting will add.
+To type this the `IInjectedProps` interface has all the properties defined that injecting will add.
 
-To use it extend your current Property interface with `IInjectableProps`.
+To use it extend your current Property interface with `IInjectedProps`.
 
 ```typescript
 import React from 'react';
@@ -57,6 +57,9 @@ render((
   </Router>
 ), document.getElementById('example'));
 ```
+
+You can also wrap another component with `withRouter` using `IWithRouterProps`.
+See the [`withRouter` example](examples/with-router.tsx) for details.
 
 This is quite a large api so I might have missed some of the details.
 If there is something that should work or documentation that's incorrect please don't hesistate to post an issue.
