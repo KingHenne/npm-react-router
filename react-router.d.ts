@@ -776,14 +776,26 @@ declare module ReactRouter {
 	export function createRoutes(routes: (Route | PlainRoute)[]): Route[];
 
 	/**
-	 * Add router object to props of pure component
+	 * Contains router related props that are injected into a component's props when using `withRouter()`.
+	 *
+	 * @export
+	 * @interface IWithRouterProps
 	 */
-	export function withRouter<T>(fun: (props: T & { router: IRouter }) => JSX.Element): (props: T) => JSX.Element;
+	export interface IWithRouterProps {
+		router: IRouter;
+		params: Params;
+		location: Location;
+	}
 
 	/**
-	 * Add router object to props of component
+	 * Inject router related props into a stateless functional component.
 	 */
-	export function withRouter<T extends Function>(el: T): T;
+	export function withRouter<T>(component: React.StatelessComponent<IWithRouterProps & T>): React.ComponentClass<T>;
+
+	/**
+	 * Inject router related props into a component class.
+	 */
+	export function withRouter<T>(component: React.ComponentClass<IWithRouterProps & T>): React.ComponentClass<T>;
 }
 
 export = ReactRouter;
